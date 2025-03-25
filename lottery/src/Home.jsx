@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { ethers } from "ethers";
+import { ethers } from "ethers"; // ✅ Correct Import
+
 import constants from "./constants";
 
 const Home = () => {
@@ -49,7 +50,9 @@ const Home = () => {
   const enterLottery = async () => {
     if (!contractInstance) return;
     try {
-      const tx = await contractInstance.enter({ value: ethers.utils.parseEther("0.001") });
+      const tx = await contractInstance.enter({
+        value: ethers.utils.parseEther("0.001"),
+      });
       await tx.wait();
       alert("You have entered the lottery!");
     } catch (err) {
